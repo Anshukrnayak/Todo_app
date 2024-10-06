@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid mx-5 my-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Task Id</th>
+                <th scope="col">Task</th>
+                <th scope="col" class="mx-5">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% if task_list %}
+            {% for task in task_list %}
+
+
+
+            <tr>
+                <th scope="row"> {{task.id}} </th>
+                <td> {{task.name}} </td>
+                <td>
+
+                    <a class="btn bg-primary text-white mx-4" href="{% url 'update' task.id %}">update</a>
+                    <a class="btn bg-danger text-white" href="{% url 'delete' task.id  %}">Delete</a>
+                    
+                    {% if task.is_done %}
+                    <a class="btn bg-info text-white mx-3" href="{% url 'done' task.id %}">Not done</a>
+                    {% else %}
+                    <a class="btn bg-info text-white mx-3" href="{% url 'done' task.id %}">Done</a>
+                    {% endif %}
+                    
+
+                </td>
+            </tr>
+
+
+            {% endfor %}
+
+            {% else %}
+
+            <p class="fs-4 text-center my-4 mx-5 ">Task list is empty</p>
+
+            {% endif %}
+
+
+
+        </tbody>
+    </table>
+
+</div>
+
+
+{% endblock %}

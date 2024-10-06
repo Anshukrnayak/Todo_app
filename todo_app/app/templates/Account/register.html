@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{%  block content %}
+
+<div class="container-fluid">
+    <div class="row flex justify-center ">
+       
+        <div class="col-6  flex justify-center mx-5 my-5 ">
+            <form action="" method="post">
+                {% csrf_token %}
+            
+                {{form.as_p}}
+                
+                <button type="submit" class="btn bg-primary text-white mx-5 my-5">Signup </button>
+                
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
